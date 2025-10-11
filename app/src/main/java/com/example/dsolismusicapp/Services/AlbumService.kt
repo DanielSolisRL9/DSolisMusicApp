@@ -7,9 +7,9 @@ import retrofit2.http.Path
 interface AlbumService {
 
     @GET("albums")
-    suspend fun getAllProducts() : List<Albums>
+    suspend fun getAllAlbums() : List<Albums>
 
     @GET("albums/{id}")
-    suspend fun getProductById(@Path("id") id: String) : Albums
+    suspend fun getAlbumsById(@Path("id") id: String) : Albums
 
 }
