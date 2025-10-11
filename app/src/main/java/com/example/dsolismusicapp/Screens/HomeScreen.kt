@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -25,6 +26,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.dsolismusicapp.Components.Header
+import com.example.dsolismusicapp.Components.LazyColumnAlbum
 import com.example.dsolismusicapp.Models.Albums
 import com.example.dsolismusicapp.Services.AlbumService
 import com.example.dsolismusicapp.ui.theme.DSolisMusicAppTheme
@@ -89,7 +91,6 @@ fun HomeScreen(){
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 20.dp)
-                .weight(3f)
         ){
             Text("Albums",
                 fontWeight = FontWeight.Bold,
@@ -102,6 +103,24 @@ fun HomeScreen(){
                 fontSize = 18.sp,
                 color = androidx.compose.ui.graphics.Color.Magenta
                 )
+        }
+        Row (
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 20.dp)
+                .weight(3f)
+        ){
+            Text("Rently Played",
+                fontWeight = FontWeight.Bold,
+                fontSize = 22.sp
+            )
+
+            Spacer(modifier = Modifier.weight(1f))
+
+            Text("See more",
+                fontSize = 18.sp,
+                color = androidx.compose.ui.graphics.Color.Magenta
+            )
         }
 
 
