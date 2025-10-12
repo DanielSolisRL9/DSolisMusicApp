@@ -71,7 +71,8 @@ fun LazyRowAlbum(album : Albums,
             verticalAlignment = Alignment.CenterVertically
         ) {
             Column(
-                modifier = Modifier.weight(1f)
+                modifier = Modifier
+                    .weight(1f)
             ) {
                 Text(
                     text = album.title,

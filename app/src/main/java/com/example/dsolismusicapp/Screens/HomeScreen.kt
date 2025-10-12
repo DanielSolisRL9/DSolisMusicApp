@@ -28,12 +28,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.dsolismusicapp.Components.BarraInferior
 import com.example.dsolismusicapp.Components.Header
 import com.example.dsolismusicapp.Components.LazyColumnAlbum
 import com.example.dsolismusicapp.Components.LazyRowAlbum
 import com.example.dsolismusicapp.Models.Albums
 import com.example.dsolismusicapp.Services.AlbumService
 import com.example.dsolismusicapp.ui.theme.DSolisMusicAppTheme
+import com.example.dsolismusicapp.ui.theme.LightPastelBlue
+import com.example.dsolismusicapp.ui.theme.PlayerPurpleDark
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import retrofit2.Retrofit
@@ -82,12 +85,12 @@ fun HomeScreen(){
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(androidx.compose.ui.graphics.Color.White)
+                .background(LightPastelBlue)
                 .padding(horizontal = 20.dp)
         ) {
             Header(
                 modifier = Modifier
-                    .weight(1f)
+                    .weight(1.1f)
             )
             Row (
                 modifier = Modifier
@@ -103,7 +106,7 @@ fun HomeScreen(){
 
                 Text("See more",
                     fontSize = 18.sp,
-                    color = androidx.compose.ui.graphics.Color.Magenta
+                    color = PlayerPurpleDark
                 )
             }
 
@@ -136,7 +139,7 @@ fun HomeScreen(){
 
                 Text("See more",
                     fontSize = 18.sp,
-                    color = androidx.compose.ui.graphics.Color.Magenta
+                    color = PlayerPurpleDark
                 )
             }
             LazyColumn (
@@ -152,6 +155,7 @@ fun HomeScreen(){
                     )
                 }
             }
+            BarraInferior(album = albums.random())
         }
     }
 
