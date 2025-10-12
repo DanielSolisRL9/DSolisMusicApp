@@ -28,6 +28,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.dsolismusicapp.Components.BarraInferior
 import com.example.dsolismusicapp.Components.Header
 import com.example.dsolismusicapp.Components.LazyColumnAlbum
@@ -35,6 +37,7 @@ import com.example.dsolismusicapp.Components.LazyRowAlbum
 import com.example.dsolismusicapp.Models.Albums
 import com.example.dsolismusicapp.Services.AlbumService
 import com.example.dsolismusicapp.ui.theme.DSolisMusicAppTheme
+import com.example.dsolismusicapp.ui.theme.DetailScreenRoute
 import com.example.dsolismusicapp.ui.theme.LightPastelBlue
 import com.example.dsolismusicapp.ui.theme.PlayerPurpleDark
 import kotlinx.coroutines.Dispatchers
@@ -43,7 +46,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 @Composable
-fun HomeScreen(){
+fun HomeScreen(
+    navController: NavController
+){
     var albums by remember {
         mutableStateOf(listOf<Albums>())
     }
@@ -120,7 +125,9 @@ fun HomeScreen(){
                 items(albums){ album ->
                     LazyRowAlbum(
                         album = album,
-                        onClick = {}
+                        onClick = {
+                            navController.navigate(DetailScreenRoute(album.id))
+                        }
                     )
                 }
             }
@@ -151,7 +158,9 @@ fun HomeScreen(){
                 items(albums){ album ->
                     LazyColumnAlbum(
                         album = album,
-                        onClick = {}
+                        onClick = {
+                            navController.navigate(DetailScreenRoute(album.id))
+                        }
                     )
                 }
             }
@@ -166,6 +175,6 @@ fun HomeScreen(){
 @Composable
 fun HomeScreenView(){
     DSolisMusicAppTheme {
-        HomeScreen()
+        HomeScreen(rememberNavController())
     }
 }

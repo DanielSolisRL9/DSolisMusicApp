@@ -13,6 +13,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -25,13 +26,16 @@ fun DetailAlbum(album: Albums, modifier: Modifier = Modifier) {
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .padding(16.dp)
+            .padding(top = 15.dp)
     ) {
         Card(
             modifier = Modifier
                 .fillMaxWidth()
                 .clip(RoundedCornerShape(16.dp)),
-            elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+            elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+            colors = CardDefaults.cardColors(
+                containerColor = Color.White
+            )
         ) {
             Column(modifier = Modifier.padding(16.dp)) {
                 Text(
@@ -40,7 +44,7 @@ fun DetailAlbum(album: Albums, modifier: Modifier = Modifier) {
                     fontSize = 20.sp
                 )
                 Spacer(modifier = Modifier.height(8.dp))
-                Text(album.description)
+                Text(album.description ?: "")
             }
         }
 
@@ -48,22 +52,26 @@ fun DetailAlbum(album: Albums, modifier: Modifier = Modifier) {
 
         Card(
             modifier = Modifier
-                .fillMaxWidth(.5f)
+                .fillMaxWidth(0.8f)
                 .clip(RoundedCornerShape(16.dp)),
-            elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+            elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+            colors = CardDefaults.cardColors(
+                containerColor = Color.White
+            )
         ) {
-            Row (modifier = Modifier.padding(16.dp)) {
+            Row(modifier = Modifier.padding(16.dp)) {
                 Text(
                     text = "Artist: ",
                     fontWeight = FontWeight.Bold,
                     fontSize = 20.sp
                 )
                 Spacer(modifier = Modifier.height(8.dp))
-                Text(album.artist)
+                Text(album.artist ?: "")
             }
         }
     }
 }
+
 
 
 @Preview

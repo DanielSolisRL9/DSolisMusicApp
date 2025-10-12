@@ -39,7 +39,7 @@ fun LazyColumnAlbum(album : Albums,
                     onClick : () -> Unit){
     Row (
         modifier = Modifier
-            .padding(10.dp)
+            .padding(top = 10.dp)
             .fillMaxWidth()
             .height(100.dp)
             .clip(RoundedCornerShape(16.dp))

@@ -14,7 +14,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.dsolismusicapp.Components.BarraInferior
+import com.example.dsolismusicapp.Components.DetailAlbum
 import com.example.dsolismusicapp.Components.HeaderDetail
+import com.example.dsolismusicapp.Components.LazyColumDetail
 import com.example.dsolismusicapp.Models.Albums
 import com.example.dsolismusicapp.Services.AlbumService
 import com.example.dsolismusicapp.ui.theme.DSolisMusicAppTheme
@@ -49,14 +52,21 @@ fun DetailScreen(id : String){
             Log.e("DetailScreen", e.toString())
         }
     }
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(LightPastelBlue)
-            .padding(horizontal = 20.dp)
-    ){
-
+    album?.let { a ->
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(LightPastelBlue)
+                .padding(horizontal = 20.dp)
+        ) {
+            HeaderDetail(album = a, modifier = Modifier.weight(1.5f))
+            DetailAlbum(album = a) 
+            LazyColumDetail(album = a, modifier = Modifier.weight(2f))
+            BarraInferior(album = a)
+        }
     }
+
+
 
 }
 

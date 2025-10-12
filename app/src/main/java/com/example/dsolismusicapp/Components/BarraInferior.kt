@@ -69,7 +69,7 @@ fun BarraInferior(album : Albums){
                 fontWeight = FontWeight.Bold,
                 fontSize = 19.sp,
                 color = Color.White)
-            Text("${album.artist} - Popular song",
+            Text(album.artist,
                 fontSize = 14.sp,
                 color = Color.White)
         }

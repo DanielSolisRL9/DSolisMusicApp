@@ -44,11 +44,12 @@ fun HeaderDetail(album: Albums, modifier: Modifier = Modifier) {
     Box(
         modifier = modifier
             .fillMaxWidth()
+            .padding(top = 40.dp)
             .clip(RoundedCornerShape(16.dp))
     ) {
         AsyncImage(
-            model = album.image,
-            contentDescription = album.title,
+            model = album.image ?: "",
+            contentDescription = album.title ?: "",
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxSize()
         )
@@ -103,14 +104,14 @@ fun HeaderDetail(album: Albums, modifier: Modifier = Modifier) {
         ) {
 
             Text(
-                album.title,
+                text = album.title ?: "",
                 fontSize = 30.sp,
                 color = Color.White,
                 fontWeight = FontWeight.Bold
             )
 
             Text(
-                album.artist,
+                text = album.artist ?: "",
                 fontSize = 20.sp,
                 color = Color.White.copy(alpha = 0.8f)
             )

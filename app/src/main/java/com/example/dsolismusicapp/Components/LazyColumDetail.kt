@@ -33,11 +33,13 @@ import com.example.dsolismusicapp.ui.theme.DSolisMusicAppTheme
 
 @Composable
 fun LazyColumDetail(album: Albums, modifier: Modifier = Modifier){
-    LazyColumn(modifier = modifier) {
+    LazyColumn(modifier = modifier
+        .padding(top = 16.dp)
+    ) {
         items(10) { index ->
             Row(
                 modifier = Modifier
-                    .padding(10.dp)
+                    .padding(top = 10.dp)
                     .fillMaxWidth()
                     .height(100.dp)
                     .clip(RoundedCornerShape(16.dp))
@@ -51,8 +53,8 @@ fun LazyColumDetail(album: Albums, modifier: Modifier = Modifier){
                         .clip(RoundedCornerShape(10.dp))
                 ) {
                     AsyncImage(
-                        model = album.image,
-                        contentDescription = album.title,
+                        model = album.image ?: "",
+                        contentDescription = album.title ?: "",
                         modifier = Modifier.fillMaxSize(),
                         contentScale = ContentScale.Crop
                     )
@@ -74,12 +76,12 @@ fun LazyColumDetail(album: Albums, modifier: Modifier = Modifier){
                         .weight(1f)
                 ) {
                     Text(
-                        text = "${album.title} - Track ${index + 1}",
+                        text = "${album.title ?: ""} - Track ${index + 1}",
                         fontWeight = FontWeight.Bold,
                         fontSize = 19.sp
                     )
                     Text(
-                        album.artist,
+                        album.artist ?: "",
                         fontSize = 14.sp,
                         color = Color.Gray
                     )
@@ -93,6 +95,7 @@ fun LazyColumDetail(album: Albums, modifier: Modifier = Modifier){
         }
     }
 }
+
 
 
 @Preview
