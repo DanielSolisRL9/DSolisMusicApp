@@ -3,6 +3,7 @@ package com.example.dsolismusicapp.Screens
 import android.graphics.Color
 import android.util.Log
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -11,6 +12,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -27,6 +30,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.dsolismusicapp.Components.Header
 import com.example.dsolismusicapp.Components.LazyColumnAlbum
+import com.example.dsolismusicapp.Components.LazyRowAlbum
 import com.example.dsolismusicapp.Models.Albums
 import com.example.dsolismusicapp.Services.AlbumService
 import com.example.dsolismusicapp.ui.theme.DSolisMusicAppTheme
@@ -66,64 +70,89 @@ fun HomeScreen(){
         }
 
     }
-//    if (loading){
-//        Box (
-//            modifier = Modifier
-//                .fillMaxSize(),
-//            contentAlignment = Alignment.Center
-//        ){
-//            CircularProgressIndicator()
-//        }
-//    }else {
-//
-//    }
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(androidx.compose.ui.graphics.Color.White)
-            .padding(horizontal = 20.dp)
-    ) {
-        Header(
+    if (loading){
+        Box (
             modifier = Modifier
-                .weight(1f)
-        )
-        Row (
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 20.dp)
+                .fillMaxSize(),
+            contentAlignment = Alignment.Center
         ){
-            Text("Albums",
-                fontWeight = FontWeight.Bold,
-                fontSize = 22.sp
+            CircularProgressIndicator()
+        }
+    }else {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(androidx.compose.ui.graphics.Color.White)
+                .padding(horizontal = 20.dp)
+        ) {
+            Header(
+                modifier = Modifier
+                    .weight(1f)
+            )
+            Row (
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 20.dp)
+            ){
+                Text("Albums",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 22.sp
                 )
 
-            Spacer(modifier = Modifier.weight(1f))
+                Spacer(modifier = Modifier.weight(1f))
 
-            Text("See more",
-                fontSize = 18.sp,
-                color = androidx.compose.ui.graphics.Color.Magenta
+                Text("See more",
+                    fontSize = 18.sp,
+                    color = androidx.compose.ui.graphics.Color.Magenta
                 )
+            }
+
+            LazyRow (
+                modifier = Modifier
+                .fillMaxSize()
+                .padding(top = 10.dp)
+                .weight(1f),
+                horizontalArrangement = Arrangement.spacedBy(16.dp)
+            ){
+                items(albums){ album ->
+                    LazyRowAlbum(
+                        album = album,
+                        onClick = {}
+                    )
+                }
+            }
+
+            Row (
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 20.dp)
+            ){
+                Text("Rently Played",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 22.sp
+                )
+
+                Spacer(modifier = Modifier.weight(1f))
+
+                Text("See more",
+                    fontSize = 18.sp,
+                    color = androidx.compose.ui.graphics.Color.Magenta
+                )
+            }
+            LazyColumn (
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(top = 10.dp)
+                    .weight(2f)
+            ){
+                items(albums){ album ->
+                    LazyColumnAlbum(
+                        album = album,
+                        onClick = {}
+                    )
+                }
+            }
         }
-        Row (
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 20.dp)
-                .weight(3f)
-        ){
-            Text("Rently Played",
-                fontWeight = FontWeight.Bold,
-                fontSize = 22.sp
-            )
-
-            Spacer(modifier = Modifier.weight(1f))
-
-            Text("See more",
-                fontSize = 18.sp,
-                color = androidx.compose.ui.graphics.Color.Magenta
-            )
-        }
-
-
     }
 
 

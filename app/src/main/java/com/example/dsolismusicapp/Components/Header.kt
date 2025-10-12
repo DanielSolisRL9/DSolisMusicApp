@@ -30,8 +30,8 @@ fun Header(modifier: Modifier = Modifier){
     Card(
         modifier = modifier
             .fillMaxWidth()
-            .padding(  top = 20.dp),
-        shape = RoundedCornerShape(23.dp),
+            .padding(  top = 40.dp),
+        shape = RoundedCornerShape(30.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         colors = CardDefaults.cardColors(
             containerColor = Color.Magenta
