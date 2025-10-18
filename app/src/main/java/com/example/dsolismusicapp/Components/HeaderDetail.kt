@@ -36,6 +36,7 @@ import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import com.example.dsolismusicapp.Models.Albums
 import com.example.dsolismusicapp.ui.theme.DSolisMusicAppTheme
+import com.example.dsolismusicapp.ui.theme.Pause
 import com.example.dsolismusicapp.ui.theme.PlayerPurpleDark
 import com.example.dsolismusicapp.ui.theme.PlayerPurpleLight
 
@@ -131,7 +132,7 @@ fun HeaderDetail(album: Albums, modifier: Modifier = Modifier) {
                 Spacer(modifier = Modifier.width(12.dp))
 
                 Icon(
-                    imageVector = Icons.Default.PlayArrow,
+                    imageVector = Pause,
                     contentDescription = null,
                     tint = PlayerPurpleLight,
                     modifier = Modifier

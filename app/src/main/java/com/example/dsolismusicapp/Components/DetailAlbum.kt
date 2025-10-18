@@ -1,5 +1,6 @@
 package com.example.dsolismusicapp.Components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -13,6 +14,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -28,16 +30,14 @@ fun DetailAlbum(album: Albums, modifier: Modifier = Modifier) {
             .fillMaxWidth()
             .padding(top = 15.dp)
     ) {
-        Card(
-            modifier = Modifier
+            Column(modifier = Modifier
                 .fillMaxWidth()
-                .clip(RoundedCornerShape(16.dp)),
-            elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
-            colors = CardDefaults.cardColors(
-                containerColor = Color.White
-            )
-        ) {
-            Column(modifier = Modifier.padding(16.dp)) {
+                //.padding(16.dp)
+                .shadow(6.dp, RoundedCornerShape(16.dp))
+                .clip(RoundedCornerShape(16.dp))
+                .background(Color.White)
+                .padding(10.dp)
+            ) {
                 Text(
                     text = "About This Album",
                     fontWeight = FontWeight.Bold,
@@ -46,20 +46,16 @@ fun DetailAlbum(album: Albums, modifier: Modifier = Modifier) {
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(album.description ?: "")
             }
-        }
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        Card(
-            modifier = Modifier
-                .fillMaxWidth(0.8f)
-                .clip(RoundedCornerShape(16.dp)),
-            elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
-            colors = CardDefaults.cardColors(
-                containerColor = Color.White
-            )
-        ) {
-            Row(modifier = Modifier.padding(16.dp)) {
+            Row(modifier = Modifier
+                .fillMaxWidth(.8f)
+                .shadow(9.dp, RoundedCornerShape(16.dp))
+                .clip(RoundedCornerShape(16.dp))
+                .background(Color.White)
+                .padding(10.dp)
+                ) {
                 Text(
                     text = "Artist: ",
                     fontWeight = FontWeight.Bold,
@@ -68,7 +64,6 @@ fun DetailAlbum(album: Albums, modifier: Modifier = Modifier) {
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(album.artist ?: "")
             }
-        }
     }
 }
 
